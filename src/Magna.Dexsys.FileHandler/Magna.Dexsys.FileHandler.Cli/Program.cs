@@ -6,8 +6,9 @@ namespace Magna.Dexsys.FileHandler.Cli;
 
 public class Program
 {
-    private const string _fileLocation = "C:\\temp\\generatedFiles";
-    private const string _searchValue = "OLD";
+    //I'd rather not hard code these values, call Constant class instead, allows to be retrievable across the application
+    private const string _fileLocation = Common.Constants.FileLocation;
+    private const string _searchValue = Common.Constants.SearchValue;
 
     public static void Main(string[] args)
     {
@@ -22,19 +23,19 @@ public class Program
         Console.ReadLine();
     }
 
-    private static void Test(string searchValue)
+    private async static void Test(string searchValue)
     {
         Stopwatch stopwatch = Stopwatch.StartNew();
 
         FileSearchService searchService = new();
-        searchService.LocateFilesContainingSearchValue(_fileLocation, searchValue);
+        await searchService.LocateFilesContainingSearchValue(_fileLocation, searchValue);
         stopwatch.Stop();
-
+        Console.WriteLine($"Search Value : { _searchValue}");
         foreach (FileDetails item in searchService.FilesLocated)
         {
-            Console.WriteLine(item.Name, item.Content);
+            Console.WriteLine($"File Name: {item.Name}\nFile Content: \n{item.Content}");
         }
 
-        Console.WriteLine($"Completed in {stopwatch.ElapsedMilliseconds}");
+        Console.WriteLine($"Completed in {stopwatch.ElapsedMilliseconds}\n");
     }
 }
