@@ -9,6 +9,7 @@ namespace Magna.Dexsys.FileHandler.Common
     public static class Constants
     {
         public const string FileLocation = "C:\\Users\\powel\\source\\repos\\DotnetCodingTest\\assets\\generatedFiles";
+        public const string UnitTestFolderLocation = "C:\\Users\\powel\\source\\repos\\DotnetCodingTest\\assets\\UnitTestFileFolder";
         public const string SearchValue = "OLD";
     }
 }

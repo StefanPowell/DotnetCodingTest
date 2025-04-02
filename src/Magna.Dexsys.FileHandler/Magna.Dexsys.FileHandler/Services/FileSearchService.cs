@@ -1,4 +1,5 @@
-﻿using Magna.Dexsys.FileHandler.Models;
+﻿using Magna.Dexsys.FileHandler.Interface;
+using Magna.Dexsys.FileHandler.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -9,10 +10,14 @@ using System.Threading.Tasks;
 using static System.Net.WebRequestMethods;
 
 namespace Magna.Dexsys.FileHandler.Services;
-public class FileSearchService
+public class FileSearchService : IFileSearchService
 {
     public IReadOnlyList<FileDetails> FilesLocated => _filesLocated.AsReadOnly();
     private readonly List<FileDetails> _filesLocated = [];
+
+    public FileSearchService()
+    {
+    }
 
     /// <summary>
     /// Populate the instance's FilesLocated member with a collection of
