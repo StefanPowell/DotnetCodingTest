@@ -16,7 +16,7 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: '8.0.x'  # Adjust this based on your project version
+          dotnet-version: '9.0.x'  # Adjust this based on your project version
 
       - name: Restore dependencies
         run: dotnet restore src/Magna.Dexsys.FileHandler/Magna.Dexsys.FileHandler.sln
@@ -25,5 +25,5 @@ jobs:
         run: dotnet build src/Magna.Dexsys.FileHandler/Magna.Dexsys.FileHandler.sln --configuration Release --no-restore
 
       - name: Run tests
-        run: dotnet test src/Magna.Dexsys.FileHandler/Magna.Dexsys.FileHandler.sln --no-build --verbosity normal
+        run: dotnet test src/Magna.Dexsys.FileHandler/Magna.Dexsys.FileHandlerTests/Magna.Dexsys.FileHandlerTests.csproj --no-build --verbosity normal
 
